@@ -1,6 +1,9 @@
-<title>AutoHEN Installer</title>
+<title>Instalador De HEN Automático</title>
 <center>
-<h1>AutoHEN Installer (4.92 HFW)</h1>
+<h1>Instalador De HEN Automático HFW 4.92</h1>
+<h1><span style='color:#7D2181'>Creado y adaptado por Augusto Tips. Gracias a Aldo Vargas, PSXPlace por brindar sus herramientas y conocimientos, sin ellos no sería esto posible</span></h1>	
+<hr>
+<h1><span style='color:#7D2181'>HEN 3.4 Oficial</span></h1>
 <hr>
 <div id="result"></div>
 <div id="exploit"></div>
@@ -363,7 +366,7 @@ function initROP(init)
 		if((j2===jump_2)&&(j1===jump_1)&&(x===xtra_data)&&(sf===stack_frame))
 		{
 			if(t_out!==0){clearTimeout(t_out);}
-			showMsg('<h2>Downloading setup file...</h2>');
+			showMsg('<h2>Descargando archivo de instalación...</h2>');
 			window.location.href = 'HEN.P3T';
 			setTimeout(listener,1500);
 		}
@@ -382,7 +385,7 @@ function listener()
 	var myListener = function ()
 	{
 		document.removeEventListener('mousemove', myListener, false);
-		showMsg('<h2>Installing HEN, please wait...</h2>');
+		showMsg('<h2>Instalando HEN, por favor espere...</h2>');
 		triggerX();
 	};
 	document.addEventListener('mousemove', myListener, false);
@@ -390,13 +393,13 @@ function listener()
 function triggerX()
 {
 	setTimeout(trigger,50,jump_1_addr);
-	setTimeout(showMsg,2000,"<h2><span style='color:red'>Failed to load setup file. Close the browser and try again.</span></h2>");
+	setTimeout(showMsg,2000,"<h2><span style='color:red'>No se pudo cargar el archivo de instalación. Cierre el navegador y vuelva a intentarlo.</span></h2>");
 	t_out=0;
 	total_loops=0;
 }
 function HFWmsg()
 {
-	showMsg("<h2><span style='color:red'>You must install Hybrid Firmware (HFW) 4.92 before installing HEN!</h2></span>");
+	showMsg("<h2><span style='color:red'>¡Debes instalar el firmware híbrido (HFW) 4.92 antes de instalar HEN!</h2></span>");
 	throw new Error('');
 }
 if(fwv=="4.92"){initROP(true)}else{HFWmsg()}
